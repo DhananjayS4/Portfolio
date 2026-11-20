@@ -1,0 +1,211 @@
+@import "tailwindcss";
+
+@theme {
+  --font-sans: "Outfit", ui-sans-serif, system-ui, sans-serif;
+  --font-serif: "Instrument Serif", Georgia, "Times New Roman", serif;
+  --color-ink: #07080d;
+  --color-panel: #12151e;
+  --color-mist: #c5cedc;
+  --color-signal: #9dc0ff;
+  --color-iris: #c9b8ff;
+  --color-aqua: #8ee0cb;
+}
+
+@layer base {
+  html {
+    scroll-behavior: smooth;
+  }
+
+  body {
+    margin: 0;
+    min-height: 100vh;
+    background: var(--color-ink);
+    color: #f5f7fb;
+    font-family: var(--font-sans);
+    overflow-x: hidden;
+  }
+
+  ::selection {
+    background: #9dc0ff;
+    color: #07080d;
+  }
+}
+
+@layer components {
+  .btn {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 0.45rem;
+    border-radius: 999px;
+    padding: 0.7rem 1.05rem;
+    font-size: 0.925rem;
+    font-weight: 560;
+    line-height: 1;
+    cursor: pointer;
+    transition: background-color 0.2s ease, border-color 0.2s ease, color 0.2s ease;
+  }
+
+  .btn-primary {
+    background: white;
+    color: var(--color-ink);
+  }
+
+  .btn-primary:hover {
+    background: #e7eefc;
+  }
+
+  .btn-secondary {
+    border: 1px solid rgba(255, 255, 255, 0.18);
+    color: white;
+    background: transparent;
+  }
+
+  .btn-secondary:hover {
+    border-color: rgba(255, 255, 255, 0.45);
+    background: rgba(255, 255, 255, 0.04);
+  }
+
+  .panel {
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    background: rgba(255, 255, 255, 0.03);
+    border-radius: 1.5rem;
+  }
+
+  .panel-ai {
+    border-color: rgba(142, 224, 203, 0.4);
+    background:
+      radial-gradient(620px 220px at 0% 0%, rgba(142, 224, 203, 0.14), transparent 55%),
+      radial-gradient(520px 220px at 100% 100%, rgba(157, 192, 255, 0.14), transparent 50%),
+      rgba(255, 255, 255, 0.03);
+  }
+}
+
+.skip-link {
+  position: fixed;
+  left: 1rem;
+  top: 0;
+  z-index: 80;
+  transform: translateY(-150%);
+  border-radius: 0.6rem;
+  background: white;
+  color: var(--color-ink);
+  padding: 0.6rem 0.9rem;
+  font-weight: 600;
+}
+
+.skip-link:focus {
+  transform: translateY(1rem);
+}
+
+:focus-visible {
+  outline: 2px solid var(--color-signal);
+  outline-offset: 3px;
+}
+
+.hero-grid {
+  background-image:
+    linear-gradient(to right, rgba(255, 255, 255, 0.045) 1px, transparent 1px),
+    linear-gradient(to bottom, rgba(255, 255, 255, 0.045) 1px, transparent 1px);
+  background-size: 72px 72px;
+  mask-image: radial-gradient(ellipse at 30% 15%, #000 10%, transparent 68%);
+}
+
+.grain {
+  background-image: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='180' height='180'><filter id='n'><feTurbulence type='fractalNoise' baseFrequency='.8' numOctaves='2' stitchTiles='stitch'/></filter><rect width='180' height='180' filter='url(%23n)' opacity='.55'/></svg>");
+  opacity: 0.045;
+}
+
+#print-resume {
+  display: none;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto;
+  }
+}
+
+@media print {
+  @page {
+    size: A4;
+    margin: 11mm;
+  }
+
+  .no-print {
+    display: none !important;
+  }
+
+  body {
+    background: white !important;
+    color: #16181d !important;
+    overflow: visible !important;
+  }
+
+  #print-resume {
+    display: block !important;
+    color: #16181d;
+    font-family: "Outfit", ui-sans-serif, sans-serif;
+    font-size: 10pt;
+    line-height: 1.38;
+    border-top: 3px solid #3c6fd6;
+    padding-top: 8pt;
+  }
+
+  #print-resume h1 {
+    font-family: "Instrument Serif", Georgia, serif;
+    font-size: 22pt;
+    font-weight: 400;
+    line-height: 1;
+    margin: 0;
+  }
+
+  #print-resume h2 {
+    margin: 11pt 0 4pt;
+    font-size: 10pt;
+    font-weight: 650;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    color: #24324a;
+    border-bottom: 1px solid #d5dbe6;
+    padding-bottom: 2pt;
+  }
+
+  #print-resume p,
+  #print-resume ul {
+    margin: 0;
+  }
+
+  #print-resume ul {
+    margin-top: 3pt;
+    padding-left: 1.15em;
+  }
+
+  #print-resume li {
+    margin: 0 0 1.5pt;
+  }
+
+  .resume-top {
+    display: flex;
+    justify-content: space-between;
+    gap: 18pt;
+    align-items: flex-end;
+  }
+
+  .resume-role,
+  .resume-contact {
+    margin-top: 3pt;
+    color: #3c4658;
+  }
+
+  .resume-block {
+    margin-top: 3pt;
+  }
+
+  .resume-row {
+    display: flex;
+    justify-content: space-between;
+    gap: 12pt;
+    align-items: baseline;
+  }
+}
