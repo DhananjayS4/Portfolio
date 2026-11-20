@@ -36,11 +36,11 @@ npm run preview
 
 ## Deploy
 
-The production build is a static site in `dist`. This repository is published with GitHub Pages from the `gh-pages` branch:
+The production build is a static site in `dist`. Source is in [DhananjayS4/Portfolio](https://github.com/DhananjayS4/Portfolio) and GitHub Pages publishes the `gh-pages` branch.
 
 ```bash
 npm run build
 npx gh-pages -d dist
 ```
 
-The live site is [https://dhananjays4.github.io/](https://dhananjays4.github.io/).
+The live site is [https://dhananjays4.github.io/Portfolio/](https://dhananjays4.github.io/Portfolio/).
